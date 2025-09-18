@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ذكرى المرحوم محمود عادل محمد حسين — صدقة جارية</title>
+<style>
+  :root{
+    --bg: #eafdfc;            /* خلفية فاتحة قريبة للتركواز */
+    --card: #ffffff;
+    --muted: #3b4850;
+    --turquoise: #1fa8a3;     /* لون تركواز رئيسي */
+    --turquoise-dark: #0f7f79;/* لون للعدادات */
+    --accent: #138a84;
+    --ornament: rgba(31,168,163,0.16);
+    font-family: "Noto Naskh Arabic", "Amiri", "Segoe UI", Tahoma, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:linear-gradient(180deg,#f7fffe,var(--bg));color:#111;line-height:1.7;font-size:16px}
+  header{
+    background:linear-gradient(90deg,var(--turquoise),#3db6b0);
+    color:white;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.06);
+  }
+  header h1{margin:0;font-size:18px}
+  nav{display:flex;gap:8px;align-items:center}
+  nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:700}
+  nav a.active, nav a:hover{background:rgba(255,255,255,0.12)}
+  .container{max-width:980px;margin:20px auto;padding:0 14px 60px}
+  .card{background:var(--card);border-radius:10px;margin:18px 0;padding:18px;position:relative;
+        box-shadow:0 6px 18px rgba(17,24,39,0.06);overflow:visible;border:1px solid rgba(0,0,0,0.04)}
+  /* زخارف أعلى وأسفل البطاقات بلون تركواز خفيف */
+  .card::before, .card::after{
+    content:"";position:absolute;left:16px;right:16px;height:18px;background:
+      linear-gradient(90deg, transparent, var(--ornament) 40%, var(--ornament) 60%, transparent);
+    background-repeat:no-repeat;background-position:center center;pointer-events:none;
+  }
+  .card::before{top:-10px;border-top-left-radius:8px;border-top-right-radius:8px}
+  .card::after{bottom:-10px;border-bottom-left-radius:8px;border-bottom-right-radius:8px}
+  .card h2, .card h3{margin:0 0 8px 0;text-align:center;color:var(--accent)}
+  .card p{margin:0 0 10px 0;color:var(--muted);text-align:justify}
+  .supplication-block{padding:12px;border-radius:8px;background:#f6fffe;border:1px solid rgba(0,0,0,0.03)}
+  .supplication-title{font-weight:800;color:#11494a;text-align:center;margin-bottom:8px}
+  blockquote{margin:8px 0;padding:12px;border-right:4px solid var(--turquoise);background:#f7fffb;border-radius:6px}
+  .dhikr{display:flex;flex-direction:column;gap:14px}
+  .dhikr-item{display:flex;gap:12px;align-items:center;padding:14px;border-radius:10px;background:linear-gradient(#fff,#fff);
+             border:1px solid rgba(0,0,0,0.04);position:relative}
+  .dhikr-item .text{flex:1;font-size:16px;color:#0f3836;white-space:pre-line}
+  .meta{display:flex;gap:10px;align-items:center;flex-direction:column;min-width:160px}
+  .counter-box{background:var(--turquoise-dark);color:var(--card);padding:10px 18px;border-radius:8px;font-weight:800;
+               font-size:20px;min-width:90px;text-align:center;box-shadow:inset 0 -3px 6px rgba(0,0,0,0.12);cursor:pointer}
+  .reset-btn{width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid rgba(0,0,0,0.06);
+             display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--turquoise);font-weight:700}
+  .reset-btn:hover{background:rgba(31,168,163,0.06)}
+  .small{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
+  /* Sebha (electronic rosary) design - grid with circle per phrase */
+  .sebha-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .sebha-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px;border-radius:12px;background:linear-gradient(#fff,#fff);box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+  .circle{width:160px;height:160px;border-radius:50%;border:14px solid #4fc4be;display:flex;align-items:center;justify-content:center;
+          box-shadow:0 10px 30px rgba(0,0,0,0.06);background:linear-gradient(180deg,#ffffff,#f0fffb);cursor:pointer;transition:transform .08s ease}
+  .circle:active{transform:scale(0.98)}
+  .circle-inner{width:92px;height:48px;border-radius:24px;background:var(--turquoise);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;box-shadow:0 6px 16px rgba(0,0,0,0.12)}
+  .phrase-label{font-weight:700;color:#0b5654;text-align:center}
+  .sebha-card .controls{display:flex;gap:8px;align-items:center}
+  .btn-turq{background:linear-gradient(180deg,#38c6bf,#1fa8a3);padding:8px 12px;border-radius:10px;border:none;font-weight:800;cursor:pointer;color:white}
+  .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;cursor:pointer}
+  @media (max-width:720px){
+    .counter-box{min-width:64px;padding:8px 12px;font-size:18px}
+    .circle{width:140px;height:140px;border-width:12px}
+    .circle-inner{width:80px;height:44px;font-size:18px}
+  }
+  .supplication-block p {
+  position: relative;
+  margin: 12px 0;
+  padding-right: 28px;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.supplication-block p::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: #40e0d0; /* تركواز */
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>صدقة جارية 
+          لِمحمود عادل محمد حسين لاشين</h1>
+      <div class="small">اللهم تقبّل كل ما يُهدى من دعاء وصدقة</div>
+    </div>
+    <nav>
+      <a href="#home" class="navlink active">الرئيسية</a>
+      <a href="#adhkar" class="navlink">الأذكار</a>
+      <a href="#sebha" class="navlink">المسبحة الإلكترونية</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HOME: full supplications (no counters) -->
+    <section id="home" class="card" data-page>
+      <h2>أفضل الأدعية المأثورة للمُتَوفَّى</h2>
+
+<div style="text-align:center; margin:16px 0;">
+  <img src="Image.jpg" alt="صورة المرحوم" 
+       style="max-width:220px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" />
+</div>
+
+      <div class="supplication-block">
+        <div class="supplication-title">أدعية مأثورة</div>
+
+        <p>
+(اللَّهُمَّ، اغْفِرْ له وَارْحَمْهُ، وَاعْفُ عنْه وَعَافِهِ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بمَاءٍ وَثَلْجٍ وَبَرَدٍ، وَنَقِّهِ مِنَ الخَطَايَا كما يُنَقَّى الثَّوْبُ الأبْيَضُ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَارًا خَيْرًا مِن دَارِهِ، وَأَهْلًا خَيْرًا مِن أَهْلِهِ، وَزَوْجًا خَيْرًا مِن زَوْجِهِ، وَقِهِ فِتْنَةَ القَبْرِ وَعَذَابَ النَّارِ).
+      </p>
+
+      <p>
+(اللَّهمَّ اغْفِرْ لحيِّنا وميِّتِنا وشاهدنا وغائِبنا وصَغيرنا وَكبيرنا وذَكرِنا وأُنثانا اللَّهمَّ مَنْ أحييتَه مِنَّا فأحيِه علَى الإسلامِ ومن تَوَفَّيتَه مِنَّا فتَوفَّهُ علَى الإيمانِ اللَّهمَّ لا تحرمنا أجرَه ولا تُضلَّنا بعدَه).
+      </p>
+
+      <p>
+(اللَّهمَّ إنَّ محمود ابن عادل في ذِمَّتِك وحبلِ جِوارِك فَقِهِ من فتنةِ القبرِ وعذابِ النَّارِ وأنتَ أهلُ الوفاءِ والحقِّ فاغفر لَه وارحمهُ إنَّكَ أنتَ الغفورُ الرَّحيمُ). 
+
+      <p>
+(اللَّهُمَّ، اغْفِرْ له وَارْحَمْهُ، وَاعْفُ عنْه وَعَافِهِ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بمَاءٍ وَثَلْجٍ وَبَرَدٍ، وَنَقِّهِ مِنَ الخَطَايَا كما يُنَقَّى الثَّوْبُ الأبْيَضُ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَارًا خَيْرًا مِن دَارِهِ، وَأَهْلًا خَيْرًا مِن أَهْلِهِ، وَزَوْجًا خَيْرًا مِن زَوْجِهِ، وَقِهِ فِتْنَةَ القَبْرِ وَعَذَابَ النَّارِ).
+      </p>
+
+      <p>
+اللهمّ أبدله داراً خيراً من داره، وأهلاً خيراً من أهله، وأدخله الجنّة، وأعذه من عذاب القبر، ومن عذاب النّار   </p>
+
+      <p>
+اللهمّ عامله بما أنت أهله، ولا تعامله بما هو أهله      
+
+      <p>
+اللهمّ اجزه عن الإحسان إحساناً، وعن الإساءة عفواً وغفراناً.      
+
+      <p>
+اللهمّ إن كان محسناً فزد من حسناته، وإن كان مسيئاً فتجاوز عن سيّئاته     
+
+      <p>
+اللهمّ أدخله الجنّة من غير مناقشة حساب، ولا سابقة عذاب.    
+
+      <p>
+اللهمّ آنسه في وحدته، وفي وحشته، وفي غربته.     
+
+      <p>
+اللهم أنزله منزلاً مباركاً، وأنت خير المنزلين. اللهمّ أنزله منازل الصدّيقين، والشّهداء، والصّالحين، وحسُن أولئك رفيقاً.     
+
+      <p>
+اللهمّ اجعل قبره روضةً من رياض الجنّة، ولا تجعله حفرةً من حفر النّار. اللهمّ افسح له في قبره مدّ بصره، وافرش قبره من فراش الجنّة     
+
+      <p>
+اللهمّ أعذه من عذاب القبر، وجفاف ِالأرض عن جنبيها. اللهمّ املأ قبره بالرّضا، والنّور، والفسحة، والسّرور.     
+
+      <p>
+اللهمّ إنّه عبدك وابن عبدك، خرج من الدّنيا، وسعتها، ومحبوبها، وأحبّائه فيها، إلى ظلمة القبر، وما هو لاقيه. اللهمّ إنّه كان يشهد أنّك لا إله إلّا أنت، وأنّ محمّداً عبدك ورسولك، وأنت أعلم به.
+      
+<p>
+(اللَّهُمَّ، اغْفِرْ له وَارْحَمْهُ، وَاعْفُ عنْه وَعَافِهِ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بمَاءٍ وَثَلْجٍ وَبَرَدٍ، وَنَقِّهِ مِنَ الخَطَايَا كما يُنَقَّى الثَّوْبُ الأبْيَضُ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَارًا خَيْرًا مِن دَارِهِ، وَأَهْلًا خَيْرًا مِن أَهْلِهِ، وَزَوْجًا خَيْرًا مِن زَوْجِهِ، وَقِهِ فِتْنَةَ القَبْرِ وَعَذَابَ النَّارِ).
+      </p>
+
+      <p>
+اللهمّ إنّه نَزَل بك وأنت خير منزولٍ به، وأصبح فقيراً إلى رحمتك، وأنت غنيٌّ عن عذابه. اللهمّ آته برحمتك ورضاك، وقهِ فتنة القبر وعذابه، وآته برحمتك الأمن من عذابك حتّى تبعثه إلى جنّتك يا أرحم الرّاحمين.     
+
+      <p>
+اللهمّ انقله من مواطن الدّود، وضيق اللّحود، إلى جنّات الخلود. اللهمّ احمه تحت الأرض، واستره يوم العرض، ولا تخزه يوم يبعثون "يوم لا ينفع مالٌ ولا بنون إلّا من أتى الله بقلبٍ سليم".     
+
+      <p>
+اللهمّ يمّن كتابه، ويسّر حسابه، وثقّل بالحسنات ميزانه، وثبّت على الصّراط أقدامه، وأسكنه في أعلى الجنّات، بجوار حبيبك ومصطفاك صلّى الله عليه وسلّم.      
+
+      <p>
+اللهمّ أمّنه من فزع يوم القيامة، ومن هول يوم القيامة، واجعل نفسه آمنةً مطمئنّةً، ولقّنه حجّته.     
+
+      <p>
+اللهمّ اجعله في بطن القبر مطمئنّاً، وعند قيام الأشهاد آمناً، وبجود رضوانك واثقاً، وإلى أعلى درجاتك سابقاً.     
+
+      <p>
+اللهم اجعل عن يمينه نوراً، حتّى تبعثه آمناً مطمئنّاً في نورٍ من نورك. اللهمّ انظر إليه نظرة رضا، فإنّ من تنظُر إليه نظرة رضاً لا تعذّبه أبداً.     
+
+      <p>
+اللهمّ أسكنه فسيح الجنان، واغفر له يا رحمن، وارحمه يا رحيم، وتجاوز عمّا تعلم يا عليم.      
+
+      <p>
+اللهمّ اعف عنه، فإنّك القائل "ويعفو عن كثير". اللهمّ إنّه جاء ببابك، وأناخ بجنابك، فَجُد عليه بعفوك، وإكرامك، وجود إحسانك.      
+     
+      <p\>
+
+      <p>
+اللهمّ إنّ رحمتك وسعت كلّ شيء، فارحمه رحمةً تطمئنّ بها نفسه، وتقرّ بها عينه.
+
+      </p>
+
+      <p>
+اللهمّ احشره مع المتّقين إلى الرّحمن وفداً. اللهمّ احشره مع أصحاب اليمين، واجعل تحيّته سلامٌ لك من أصحاب اليمين.
+        
+      </p>
+
+      <p>
+اللهمّ بشّره بقولك "كلوا واشربوا هنيئاً بما أسلفتم في الأيّام الخالية".
+        
+      </p>
+
+      <p>
+ اللهمّ اجعله من الّذين سعدوا في الجنّة، خالدين فيها ما دامت السّماوات والأرض.
+        
+      </p>
+
+      <p>
+اللهمّ لا نزكّيه عليك، ولكنّا نحسبه أنّه آمن وعمل صالحاً، فاجعل له جنّتين ذواتي أفنان، بحقّ قولك: "ولمن خاف مقام ربّه جنّتان".
+        
+      </p>
+
+      <p>
+اللهمّ شفّع فيه نبيّنا ومصطفاك، واحشره تحت لوائه، واسقه من يده الشّريفة شربةً هنيئةً لا يظمأ بعدها أبداً
+        
+      </p>
+
+      <p>
+اللهم إنّه صبر على البلاء فلم يجزع، فامنحه درجة الصّابرين، الذين يوفّون أجورهم بغير حساب، فإنّك القائل "إنّما يوفّى الصّابرون أجرهم بغير حساب".
+        
+      </p>
+
+      <p>
+اللهمّ إنّه كان مُصلّ لك، فثبّته على الصّراط يوم تزلّ الأقدام.
+        
+      </p>
+
+      <p>
+ اللهمّ إنّه كان صائماً لك، فأدخله الجنّة من باب الريّان.
+        
+      </p>
+
+      <p>
+اللهمّ إنّه كان لكتابك تالياً وسامعاً، فشفّع فيه القرآن، وارحمه من النّيران، واجعله يا رحمن يرتقي في الجنّة إلى آخر آية قرأها أو سمعها، وآخر حرفٍ تلاه.
+        
+      </p>
+
+      <p>
+ اللهمّ ارزقه بكلّ حرفٍ في القرآن حلاوةً، وبكلّ كلمة كرامةً، وبكلّ اّية سعادةً، وبكلّ سورة سلامةً، وبكل جُزءٍ جزاءً.
+        
+      </p>
+
+      <p>
+ اللهمّ ارحمه فإنّه كان مسلماً، واغفر له فإنّه كان مؤمناً، وأدخله الجنّة فإنّه كان بنبيّك مصدّقاً، وسامحه فإنّه كان لكتابك مرتّلاً.
+        
+      </p>
+
+      <p>
+اللهمّ ارحمنا إذا أتانا اليقين، وعرق منّا الجبين، وكثر الأنين والحنين. اللهمّ ارحمنا إذا يئس منّا الطّبيب، وبكى علينا الحبيب، وتخلّى عنّا القريب والغريب، وارتفع النّشيج والنّحيب.
+        
+      </p>
+
+      <p>
+اللهمّ ارحمنا إذا اشتدّت الكربات، وتوالت الحسرات، وأطبقت الرّوعات، وفاضت العبرات، وتكشّفت العورات، وتعطّلت القوى والقدرات.
+        
+      </p>
+
+      <p>
+اللّهم ارحمنا إذا حُمِلنا على الأعناقِ، وبلغتِ التراقِ، وقيل من راق، وظنّ أنّه الفراق، والتفَّتِ السَّاقُ بالسَّاقِ، إليك يا ربَّنا يومئذٍ المساق.
+        
+      </p>
+
+      <p>
+اللّهم ارحمنا إذا حُمِلنا على الأعناقِ، وبلغتِ التراقِ، وقيل من راق، وظنّ أنّه الفراق، والتفَّتِ السَّاقُ بالسَّاقِ، إليك يا ربَّنا يومئذٍ المساق. اللهمّ ارحمنا إذا ورينا التّراب، وغلّقت القبور والأبواب، وانفضّ الأهل والأحباب. اللهمّ ارحمنا إذا فارقنا النّعيم، وانقطع النّسيم، وقيل ما غرّك بربّك الكريم.
+        
+      </p>
+
+      <p>
+اللّهم ارحمنا إذا حُمِلنا على الأعناقِ، وبلغتِ التراقِ، وقيل من راق، وظنّ أنّه الفراق، والتفَّتِ السَّاقُ بالسَّاقِ، إليك يا ربَّنا يومئذٍ المساق. اللهمّ ارحمنا إذا ورينا التّراب، وغلّقت القبور والأبواب، وانفضّ الأهل والأحباب. اللهمّ ارحمنا إذا فارقنا النّعيم، وانقطع النّسيم، وقيل ما غرّك بربّك الكريم.
+        
+      </p>
+
+    <p>
+اللَّهُمَّ شفع فيه نبيّنا ومصطفاك، واحشره تحت لوائه، واسقه من يده الشّريفة شربةً هنيئةً لا يظمأ بعدها أبداً.
+        
+      </p>
+    
+    <p>
+اللهمّ ارحمنا إذا قُمنا للسّؤال، وخاننا المقال، ولم ينفعنا جاهٌ، ولامال، ولا عيال، وليس إلّا فضل الكبير المتعالّ.
+        
+      </p>
+
+      <p>
+اللهمّ إنّه عبدك وابن عبدك وابن أمتك، مات وهو يشهد لك بالوحدانيّة، ولرسولك بالشّهادة، فاغفر له إنّك أنت الغفّار
+        
+      </p>
+
+      <p>
+اللهمّ لا تحرمنا أجره، ولا تفتنّا بعده، واغفر لنا وله، واجمعنا معه في جنّات النّعيم يا ربّ العالمين.
+        
+      </p>
+
+      <p>
+اللهمّ أنزل على أهله الصّبر والسّلوان، وارضهم بقضائك. اللهمّ ثبّتهم على القول الثّابت في الحياة الدّنيا، وفي الآخرة، ويوم يقوم الأشهاد.
+        
+      </p>
+
+      <p>
+اللَّهُمَّ اجْعَلْهُ فَرَطَاً وَذُخْراً لِوَالِدَيْهِ، وشَفِيعاً مُجَاباً، اللَّهُمَّ ثَقِّلْ بِهِ مَوَازِيْنَهُمَا، وأعْظِمْ بهِ أُجُورَهُمَا، وألْحِقْهُ بِصَالِحِ الـمُؤْمِنينَ، واجْعَلْهُ فِي كَفَالَةِ إِبْرَاهِيمَ، وَقِهِ بِرَحْمَتِكَ عَذَابَ الجَحِيمِ، وأبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، اللَّهُمَّ اغْفِرْ لأسْلاَفِنَا، وَأَفْرَاطِنَا، وَمَنْ سَبَقَنا بالإيْمَانِ
+        
+      </p>
+
+      <p>
+اللَّهُمَّ افسح له في قبره مدّ بصره، وافرش قبره من فراش الجنّة.
+        
+      </p>
+
+      <p>
+اللهمّ صلّ وسلّم وبارك على سيّدنا محمّد، وعلى آله وصحبه وسلّم إلى يوم الدّين.
+        
+      </p>
+    </div>
+    </section>
+
+    <!-- ADHKAR (الصباح والمساء) -->
+<section id="adhkar" class="card" data-page hidden>
+  <h2>الأذكار</h2>
+  <div style="display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:12px">
+    <button id="tab-morning" class="btn-turq" style="padding:8px 14px">أذكار الصباح</button>
+    <button id="tab-evening" class="btn-ghost" style="padding:8px 14px">أذكار المساء</button>
+  </div>
+
+  <!-- قسم الصباح -->
+  <div id="morning-section" style="display:block">
+    <h3 class="section-title" style="text-align:center;margin-top:20px">أذكار الصباح</h3>
+    <div class="small" style="text-align:center">اضغط على المربع التركوازي لتسجيل التكرار.        .</div>
+    <div class="dhikr" id="morning-list" style="margin-top:14px"></div>
+  </div>
+
+  <!-- قسم المساء -->
+  <div id="evening-section" style="display:none">
+    <h3 class="section-title" style="text-align:center;margin-top:20px">أذكار المساء</h3>
+    <div class="small" style="text-align:center">اضغط على المربع التركوازي لتسجيل التكرار.        .</div>
+    <div class="dhikr" id="evening-list" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<!-- SEBHA: شبكة من الدوائر لكل عبارة -->
+<section id="sebha" class="card" data-page hidden>
+  <h2 style="text-align:center">المسبحة الإلكترونية</h2>
+  <div class="small" style="text-align:center">لكل عبارة دائرة وعدّاد خاص بها محفوظ تلقائياً.</div>
+  <div class="sebha-grid" id="sebha-grid" style="margin-top:16px"></div>
+</section>
+
+<footer class="card" style="text-align:center">
+  <div id="footer-text">جارِ تحميل العدّادات...</div>
+</footer>
+  </main>
+
+<script>
+/* ---------------------------
+  البيانات (النصوص والمفاتيح)
+---------------------------- */
+
+/* نصوص الصباح — كما زوّدتني (استعملت النصوص كاملة كما وردت) */
+const morningItems = [
+  {key:'morning_1', text:`أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ
+اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسى - البقرة 255]. 
+من قالها حين يصبح أجير من الجن حتى يمسى ومن قالها حين يمسى أجير من الجن حتى يصبح.`},
+  {key:'morning_2', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ. 
+من قالها حين يصبح وحين يمسى كفته من كل شىء (الإخلاص والمعوذتين).`},
+  {key:'morning_3', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ.`},
+  {key:'morning_4', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.`},
+  {key:'morning_5', text:`أَصْـبَحْنا وَأَصْـبَحَ المُـلْكُ لله وَالحَمدُ لله ، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُـلكُ ولهُ الحَمْـد، وهُوَ على كلّ شَيءٍ قدير ، رَبِّ أسْـأَلُـكَ خَـيرَ ما في هـذا اليوم وَخَـيرَ ما بَعْـدَه ، وَأَعـوذُ بِكَ مِنْ شَـرِّ ما في هـذا اليوم وَشَرِّ ما بَعْـدَه، رَبِّ أَعـوذُبِكَ مِنَ الْكَسَـلِ وَسـوءِ الْكِـبَر ، رَبِّ أَعـوذُ بِكَ مِنْ عَـذابٍ في النّـارِ وَعَـذابٍ في القَـبْر.`},
+  {key:'morning_6', text:`اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ ، خَلَقْتَنـي وَأَنا عَبْـدُك ، وَأَنا عَلـى عَهْـدِكَ وَوَعْـدِكَ ما اسْتَـطَعْـت ، أَعـوذُبِكَ مِنْ شَـرِّ ما صَنَـعْت ، أَبـوءُ لَـكَ بِنِعْـمَتِـكَ عَلَـيَّ وَأَبـوءُ بِذَنْـبي فَاغْفـِرْ لي فَإِنَّـهُ لا يَغْـفِرُ الذُّنـوبَ إِلاّ أَنْتَ . 
+من قالها موقنا بها حين يمسى ومات من ليلته دخل الجنة وكذلك حين يصبح.`},
+  {key:'morning_7', text:`رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً. 
+من قالها حين يصبح وحين يمسى كان حقا على الله أن يرضيه يوم القيامة.`},
+  {key:'morning_8', text:`اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك ، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك ، وَمَلَائِكَتَكَ ، وَجَمـيعَ خَلْـقِك ، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك ، وَأَنَّ ُ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك. 
+من قالها أعتقه الله من النار.`},
+  {key:'morning_9', text:`اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْـقِك ، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك ، فَلَـكَ الْحَمْـدُ وَلَـكَ الشُّكْـر. 
+من قالها حين يصبح أدى شكر يومه.`},
+  {key:'morning_10', text:`حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ وَهُوَ رَبُّ العَرْشِ العَظـيم. 
+من قالها كفاه الله ما أهمه من أمر الدنيا والأخرة.`},
+  {key:'morning_11', text:`بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ في الأرْضِ وَلا في السّمـاءِ وَهـوَ السّمـيعُ العَلـيم. 
+لم يضره من الله شيء.`},
+  {key:'morning_12', text:`اللّهُـمَّ بِكَ أَصْـبَحْنا وَبِكَ أَمْـسَـينا ، وَبِكَ نَحْـيا وَبِكَ نَـمُوتُ وَإِلَـيْكَ النُّـشُور.`},
+  {key:'morning_13', text:`أَصْبَـحْـنا عَلَى فِطْرَةِ الإسْلاَمِ، وَعَلَى كَلِمَةِ الإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِينَا إبْرَاهِيمَ حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ المُشْرِكِينَ.`},
+  {key:'morning_14', text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ عَدَدَ خَلْـقِه ، وَرِضـا نَفْسِـه ، وَزِنَـةَ عَـرْشِـه ، وَمِـدادَ كَلِمـاتِـه.`},
+  {key:'morning_15', text:`اللّهُـمَّ عافِـني في بَدَنـي ، اللّهُـمَّ عافِـني في سَمْـعي ، اللّهُـمَّ عافِـني في بَصَـري ، لا إلهَ إلاّ أَنْـتَ.`},
+  {key:'morning_16', text:`       اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في الدُّنْـيا وَالآخِـرَة ، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في ديني وَدُنْـيايَ وَأهْـلي وَمالـي ، اللّهُـمَّ اسْتُـرْ عـوْراتي وَآمِـنْ رَوْعاتـي ، اللّهُـمَّ احْفَظْـني مِن بَـينِ يَدَيَّ وَمِن خَلْفـي وَعَن يَمـيني وَعَن شِمـالي ، وَمِن فَوْقـي ، وَأَعـوذُ بِعَظَمَـتِكَ أَن أُغْـتالَ مِن تَحْتـي. `},
+  {key:'morning_17', text:`يَا حَيُّ يَا قيُّومُ بِرَحْمَتِكَ أسْتَغِيثُ أصْلِحْ لِي شَأنِي كُلَّهُ وَلاَ تَكِلْنِي إلَى نَفْسِي طَـرْفَةَ عَيْنٍ.`},
+  {key:'morning_18', text:`أَصْبَـحْـنا وَأَصْبَـحْ المُـلكُ للهِ رَبِّ العـالَمـين ، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ خَـيْرَ هـذا الـيَوْم ، فَـتْحَهُ ، وَنَصْـرَهُ ، وَنـورَهُ وَبَـرَكَتَـهُ ، وَهُـداهُ ، وَأَعـوذُ بِـكَ مِـنْ شَـرِّ ما فـيهِ وَشَـرِّ ما بَعْـدَه.`},
+  {key:'morning_19', text:`اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه ، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت ، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِرْكِهِ ، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم. `},
+  {key:'morning_20', text:`أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ مَا خَلَـق.`},
+  {key:'morning_21', text:`اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد.`},
+  {key:'morning_22', text:`اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ.`},
+  {key:'morning_23', text:`اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنْ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنْ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ، وَقَهْرِ الرِّجَالِ.`},
+  {key:'morning_24', text:`أسْتَغْفِرُ اللهَ العَظِيمَ الَّذِي لاَ إلَهَ إلاَّ هُوَ، الحَيُّ القَيُّومُ، وَأتُوبُ إلَيهِ. `},
+  {key:'morning_25', text:`يَا رَبِّ , لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ , وَلِعَظِيمِ سُلْطَانِكَ. `},
+  {key:'morning_26', text:`اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا.`},
+  {key:'morning_27', text:`اللَّهُمَّ أَنْتَ رَبِّي لا إِلَهَ إِلا أَنْتَ ، عَلَيْكَ تَوَكَّلْتُ ، وَأَنْتَ رَبُّ الْعَرْشِ الْعَظِيمِ , مَا شَاءَ اللَّهُ كَانَ ، وَمَا لَمْ يَشَأْ لَمْ يَكُنْ ، وَلا حَوْلَ وَلا قُوَّةَ إِلا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ , أَعْلَمُ أَنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ، وَأَنَّ اللَّهَ قَدْ أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا , اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي ، وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا ، إِنَّ رَبِّي عَلَى صِرَاطٍ مُسْتَقِيمٍ. `},
+  {key:'morning_28', text:`لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ. `},
+  {key:'morning_29', text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ.`},
+  {key:'morning_30', text:`أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ`}
+];
+
+/* نصوص المساء (كما أرسلتها) */
+const eveningItems = [
+  {key:'evening_1', text:`أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ
+اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسى - البقرة 255].`},
+  {key:'evening_2', text:`أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ
+آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ. لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَّسِينَآ أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ. [البقرة 285 - 286]`},
+  {key:'evening_3', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.`},
+  {key:'evening_4', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم
+قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ. `},
+ {key:'evening_3', text:`بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم 
+ قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.`},
+  {key:'evening_5', text:`أَمْسَيْـنا وَأَمْسـى المـلكُ لله وَالحَمدُ لله ، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُـلكُ ولهُ الحَمْـد، وهُوَ على كلّ شَيءٍ قدير ، رَبِّ أسْـأَلُـكَ خَـيرَ ما في هـذهِ اللَّـيْلَةِ وَخَـيرَ ما بَعْـدَهـا ، وَأَعـوذُ بِكَ مِنْ شَـرِّ ما في هـذهِ اللَّـيْلةِ وَشَرِّ ما بَعْـدَهـا ، رَبِّ أَعـوذُبِكَ مِنَ الْكَسَـلِ وَسـوءِ الْكِـبَر ، رَبِّ أَعـوذُ بِكَ مِنْ عَـذابٍ في النّـارِ وَعَـذابٍ في القَـبْر. `},
+  {key:'evening_6', text:`اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ ، خَلَقْتَنـي وَأَنا عَبْـدُك ، وَأَنا عَلـى عَهْـدِكَ وَوَعْـدِكَ ما اسْتَـطَعْـت ، أَعـوذُبِكَ مِنْ شَـرِّ ما صَنَـعْت ، أَبـوءُ لَـكَ بِنِعْـمَتِـكَ عَلَـيَّ وَأَبـوءُ بِذَنْـبي فَاغْفـِرْ لي فَإِنَّـهُ لا يَغْـفِرُ الذُّنـوبَ إِلاّ أَنْتَ . `},
+  {key:'evening_7', text:`رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً. `},
+  {key:'evening_8', text:`اللّهُـمَّ إِنِّـي أَمسيتُ أُشْـهِدُك ، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك ، وَمَلَائِكَتَكَ ، وَجَمـيعَ خَلْـقِك ، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك ، وَأَنَّ ُ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك.`},
+  {key:'evening_9', text:`اللّهُـمَّ ما أَمسى بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْـقِك ، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك ، فَلَـكَ الْحَمْـدُ وَلَـكَ الشُّكْـر.`},
+  {key:'evening_10', text:`حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ وَهُوَ رَبُّ العَرْشِ العَظـيم. `},
+  {key:'evening_11', text:`بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ في الأرْضِ وَلا في السّمـاءِ وَهـوَ السّمـيعُ العَلـيم.`},
+  {key:'evening_12', text:`اللّهُـمَّ بِكَ أَمْسَـينا وَبِكَ أَصْـبَحْنا، وَبِكَ نَحْـيا وَبِكَ نَمُـوتُ وَإِلَـيْكَ الْمَصِيرُ. `},
+  {key:'evening_13', text:`أَمْسَيْنَا عَلَى فِطْرَةِ الإسْلاَمِ، وَعَلَى كَلِمَةِ الإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِينَا إبْرَاهِيمَ حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ المُشْرِكِينَ. `},
+  {key:'evening_14', text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ عَدَدَ خَلْـقِه ، وَرِضـا نَفْسِـه ، وَزِنَـةَ عَـرْشِـه ، وَمِـدادَ كَلِمـاتِـه. `},
+  {key:'evening_15', text:`اللّهُـمَّ عافِـني في بَدَنـي ، اللّهُـمَّ عافِـني في سَمْـعي ، اللّهُـمَّ عافِـني في بَصَـري ، لا إلهَ إلاّ أَنْـتَ.`},
+  {key:'evening_16', text:`اللّهُـمَّ إِنّـي أَعـوذُ بِكَ مِنَ الْكُـفر ، وَالفَـقْر ، وَأَعـوذُ بِكَ مِنْ عَذابِ القَـبْر ، لا إلهَ إلاّ أَنْـتَ.`},
+  {key:'evening_17', text:`اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في الدُّنْـيا وَالآخِـرَة ، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في ديني وَدُنْـيايَ وَأهْـلي وَمالـي ، اللّهُـمَّ اسْتُـرْ عـوْراتي وَآمِـنْ رَوْعاتـي ، اللّهُـمَّ احْفَظْـني مِن بَـينِ يَدَيَّ وَمِن خَلْفـي وَعَن يَمـيني وَعَن شِمـالي ، وَمِن فَوْقـي ، وَأَعـوذُ بِعَظَمَـتِكَ أَن أُغْـتالَ مِن تَحْتـي.`},
+  {key:'evening_18', text:`يَا حَيُّ يَا قيُّومُ بِرَحْمَتِكَ أسْتَغِيثُ أصْلِحْ لِي شَأنِي كُلَّهُ وَلاَ تَكِلْنِي إلَى نَفْسِي طَـرْفَةَ عَيْنٍ. `},
+  {key:'evening_19', text:`أَمْسَيْنا وَأَمْسَى الْمُلْكُ للهِ رَبِّ الْعَالَمَيْنِ، اللَّهُمَّ إِنَّي أسْأَلُكَ خَيْرَ هَذَه اللَّيْلَةِ فَتْحَهَا ونَصْرَهَا، ونُوْرَهَا وبَرَكَتهَا، وَهُدَاهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فيهِا وَشَرَّ مَا بَعْدَهَا.`},
+  {key:'evening_20', text:`اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه ، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت ، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِرْكِهِ ، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم.`},
+  {key:'evening_21', text:`أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق. `},
+  {key:'evening_22', text:`اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد.`},
+  {key:'evening_23', text:`اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ. `},
+  {key:'evening_24', text:`اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنْ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنْ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ، وَقَهْرِ الرِّجَالِ.`},
+  {key:'evening_25', text:`أسْتَغْفِرُ اللهَ العَظِيمَ الَّذِي لاَ إلَهَ إلاَّ هُوَ، الحَيُّ القَيُّومُ، وَأتُوبُ إلَيهِ. `},
+  {key:'evening_26', text:`يَا رَبِّ , لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ , وَلِعَظِيمِ سُلْطَانِكَ. `},
+  {key:'evening_27', text:`لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ. `},
+  {key:'evening_28', text:`اللَّهُمَّ أَنْتَ رَبِّي لا إِلَهَ إِلا أَنْتَ ، عَلَيْكَ تَوَكَّلْتُ ، وَأَنْتَ رَبُّ الْعَرْشِ الْعَظِيمِ , مَا شَاءَ اللَّهُ كَانَ ، وَمَا لَمْ يَشَأْ لَمْ يَكُنْ ، وَلا حَوْلَ وَلا قُوَّةَ إِلا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ , أَعْلَمُ أَنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ، وَأَنَّ اللَّهَ قَدْ أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا , اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي ، وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا ، إِنَّ رَبِّي عَلَى صِرَاطٍ مُسْتَقِيمٍ. `},
+  {key:'evening_29', text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ.`},
+  {key:'evening_30', text:`أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ`}
+];
+
+/* Sebha phrases */
+const sebhaPhrases = [
+  {key:'sebha_subhanallah', label:'سُبْحَانَ الله'},
+  {key:'sebha_alhamdulillah', label:'الْحَمْدُ لِلَّهِ'},
+  {key:'sebha_allahuakbar', label:'اللَّهُ أَكْبَرُ'},
+  {key:'sebha_la_ilaha', label:'لا إله إلا الله'},
+  {key:'sebha_astaghfirullah', label:'أَسْتَغْفِرُ الله'},
+  {key:'sebha_subhanallah_small', label:'سُبْحَانَ الله وبحمده (سبحان الله العظيم)'}
+];
+
+/* ---------------------------
+  حفظ/تحميل العدادات من الخادم أو محليًا
+---------------------------- */
+const SITE_KEY = 'mahmoud_memorial_local_counts_v2';
+let serverAvailable = false;
+
+async function fetchCounters(){
+  try{
+    const r = await fetch('/counters',{cache:'no-store'});
+    if(!r.ok) throw new Error('status '+r.status);
+    const data = await r.json();
+    serverAvailable = true;
+    return data;
+  }catch(e){
+    serverAvailable = false;
+    return null;
+  }
+}
+function loadLocal(){ try{return JSON.parse(localStorage.getItem(SITE_KEY)||'{}')}catch(e){return{}} }
+function saveLocal(obj){ localStorage.setItem(SITE_KEY, JSON.stringify(obj)); }
+
+/* تحميل وتحديث الواجهة */
+async function loadCountersToUI(){
+  const server = await fetchCounters();
+  const local = loadLocal();
+  const counts = server || local;
+
+  // dhikr counters
+  document.querySelectorAll('.dhikr-item').forEach(item=>{
+    const key = item.dataset.key;
+    const c = item.querySelector('.counter-box');
+    if(!key || !c) return;
+    c.textContent = counts[key] || 0;
+  });
+
+  // sebha counts
+  document.querySelectorAll('.sebha-card').forEach(card=>{
+    const k = card.dataset.key;
+    const el = card.querySelector('.circle-inner');
+    if(el) el.textContent = counts[k] || 0;
+  });
+
+  document.getElementById('footer-text').textContent = serverAvailable ? 'الخادم متاح — العدادات مشتركة عبر الزوار.' : 'الخادم غير متاح — العدادات تحفظ محلياً في متصفحك.';
+}
+
+/* زيادة عدّاد واحد */
+async function incrementKey(key, displayElem){
+  // تحديث سريع محلياً (optimistic)
+  const old = Number(displayElem.textContent||0);
+  displayElem.textContent = old + 1;
+  try{
+    const r = await fetch('/increment',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({id:key})
+    });
+    if(!r.ok) throw new Error('status '+r.status);
+    await loadCountersToUI();
+  }catch(e){
+    // fallback: حفظ محلي
+    const local = loadLocal();
+    local[key] = (local[key]||0) + 1;
+    saveLocal(local);
+    serverAvailable = false;
+    await loadCountersToUI();
+    console.warn('increment fallback local', e);
+  }
+}
+
+/* إعادة تعيين عدّاد */
+async function resetKey(key){
+  if(!confirm('هل تريد إعادة العدّ إلى صفر؟')) return;
+  // تحديث UI فورياً
+  document.querySelectorAll(`[data-key="${key}"] .circle-inner, [data-key="${key}"] .counter-box`).forEach(el=>el.textContent='0');
+  try{
+    const r = await fetch('/reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:key})});
+    if(!r.ok) throw new Error('status '+r.status);
+    await loadCountersToUI();
+  }catch(e){
+    const local = loadLocal(); local[key]=0; saveLocal(local);
+    serverAvailable=false;
+    await loadCountersToUI();
+    console.warn('reset fallback local', e);
+  }
+}
+
+/* ---------------------------
+  عرض القوائم في الواجهة وربط الأحداث
+---------------------------- */
+
+function renderDhikrList(list, containerId){
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  list.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'dhikr-item';
+    div.dataset.key = item.key;
+    const text = document.createElement('div'); text.className='text'; text.textContent = item.text;
+    const meta = document.createElement('div'); meta.className='meta';
+    const counter = document.createElement('div'); counter.className='counter-box'; counter.textContent='0';
+    const reset = document.createElement('button'); reset.className='reset-btn'; reset.textContent='⟳';
+    meta.appendChild(counter); meta.appendChild(reset);
+    div.appendChild(text); div.appendChild(meta);
+    container.appendChild(div);
+
+    // ربط الأحداث (مستمع واحد فقط لكل زر)
+    counter.addEventListener('click', ()=> incrementKey(item.key, counter) );
+    reset.addEventListener('click', ()=> resetKey(item.key) );
+  });
+}
+
+/* render Sebha grid (دائرة منفصلة لكل عبارة) */
+function renderSebhaGrid(){
+  const root = document.getElementById('sebha-grid');
+  root.innerHTML = '';
+  sebhaPhrases.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'sebha-card';
+    card.dataset.key = p.key;
+
+    const circle = document.createElement('div'); circle.className = 'circle';
+    const inner = document.createElement('div'); inner.className='circle-inner'; inner.textContent='0';
+    circle.appendChild(inner);
+
+    const label = document.createElement('div'); label.className='phrase-label'; label.textContent = p.label;
+
+    const controls = document.createElement('div'); controls.className='controls';
+    const btnReset = document.createElement('button'); btnReset.className='btn-ghost'; btnReset.textContent='إعادة التصفير';
+    const btnSave = document.createElement('button'); btnSave.className='btn-turq'; btnSave.textContent='حفظ العد';
+
+    controls.appendChild(btnSave); controls.appendChild(btnReset);
+
+    card.appendChild(circle); card.appendChild(label); card.appendChild(controls);
+    root.appendChild(card);
+
+    // Event bindings: ensure each element binds only once -> closure guarantees
+    circle.addEventListener('click', ()=> incrementKey(p.key, inner) );
+    btnReset.addEventListener('click', ()=> resetKey(p.key) );
+    btnSave.addEventListener('click', async ()=>{
+      if(!serverAvailable){
+        alert('الخادم غير متاح — العدادات محفوظة محليًا وسيتم مزامنتها عند عودة الخادم.');
+        return;
+      }
+      // sync: simply reload counts
+      await loadCountersToUI();
+      alert('تم مزامنة العدّاد مع الخادم.');
+    });
+  });
+}
+
+/* NAV & Tabs */
+document.getElementById('tab-morning').addEventListener('click', ()=>{
+  document.getElementById('morning-section').style.display='block';
+  document.getElementById('evening-section').style.display='none';
+  document.getElementById('tab-morning').classList.add('btn-turq');
+  document.getElementById('tab-evening').classList.remove('btn-turq');
+});
+document.getElementById('tab-evening').addEventListener('click', ()=>{
+  document.getElementById('morning-section').style.display='none';
+  document.getElementById('evening-section').style.display='block';
+  document.getElementById('tab-evening').classList.add('btn-turq');
+  document.getElementById('tab-morning').classList.remove('btn-turq');
+});
+
+/* Single-page nav (hash) */
+function show(hash){
+  document.querySelectorAll('[data-page]').forEach(p=>p.hidden=true);
+  document.querySelectorAll('.navlink').forEach(a=>a.classList.remove('active'));
+  if(!hash || hash==='#home'){ document.getElementById('home').hidden=false; document.querySelector('.navlink[href="#home"]').classList.add('active'); return; }
+  const id = hash.replace('#','');
+  const el = document.getElementById(id);
+  if(el){ el.hidden=false; document.querySelector('.navlink[href="#'+id+'"]').classList.add('active'); }
+}
+window.addEventListener('hashchange', ()=>show(location.hash));
+show(location.hash || '#home');
+
+/* INIT */
+(async function init(){
+  renderDhikrList(morningItems, 'morning-list');
+  renderDhikrList(eveningItems, 'evening-list');
+  renderSebhaGrid();
+  await loadCountersToUI();
+
+  // storage change listener (tab sync fallback)
+  window.addEventListener('storage', ()=>{ if(!serverAvailable) loadCountersToUI(); });
+
+  // nav link focus behavior (تلوين عند النقر)
+  document.querySelectorAll('.navlink').forEach(a=>a.addEventListener('click', e=>{
+    document.querySelectorAll('.navlink').forEach(n=>n.classList.remove('active')); a.classList.add('active');
+  }));
+})();
+document.addEventListener("DOMContentLoaded", () => {
+  // أزرار التبديل
+  const tabMorning = document.getElementById("tab-morning");
+  const tabEvening = document.getElementById("tab-evening");
+
+  // الأقسام
+  const morningSection = document.getElementById("morning-section");
+  const eveningSection = document.getElementById("evening-section");
+
+  // التبديل للصباح
+  tabMorning.addEventListener("click", () => {
+    morningSection.style.display = "block";
+    eveningSection.style.display = "none";
+
+    tabMorning.classList.add("btn-turq");
+    tabMorning.classList.remove("btn-ghost");
+
+    tabEvening.classList.add("btn-ghost");
+    tabEvening.classList.remove("btn-turq");
+  });
+
+  // التبديل للمساء
+  tabEvening.addEventListener("click", () => {
+    eveningSection.style.display = "block";
+    morningSection.style.display = "none";
+
+    tabEvening.classList.add("btn-turq");
+    tabEvening.classList.remove("btn-ghost");
+
+    tabMorning.classList.add("btn-ghost");
+    tabMorning.classList.remove("btn-turq");
+  });
+});
+</script>
+</body>
+</html>
