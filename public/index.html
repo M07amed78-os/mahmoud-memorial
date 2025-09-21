@@ -88,6 +88,71 @@
   background: #40e0d0; /* تركواز */
   border-radius: 50%;
 }
+/* زخارف للأذكار - بدون صور */
+.dhikr {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dhikr-item {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  border: 2px solid var(--turquoise);
+}
+
+/* حاوية الأذكار */
+.dhikr {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* البطاقة الأساسية */
+.dhikr-item {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent; /* علشان مايحصلش تضارب */
+}
+
+/* الأربع جوانب بالزخرفة */
+.dhikr-item::before,
+.dhikr-item::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* يملأ حدود العنصر */
+  border-radius: 12px;
+  padding: 2px; /* سمك الإطار */
+  background: repeating-linear-gradient(
+      45deg,
+      var(--turquoise),
+      var(--turquoise) 8px,
+      transparent 8px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      var(--turquoise),
+      var(--turquoise) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.dhikr-item::after {
+  filter: blur(1px);
+  opacity: 0.3;
+}
 </style>
 </head>
 <body>
@@ -309,6 +374,10 @@
 
     <!-- ADHKAR (الصباح والمساء) -->
 <section id="adhkar" class="card" data-page hidden>
+  <!-- زخارف -->
+  <div class="ornament-left"></div>
+  <div class="ornament-right"></div>
+
   <h2>الأذكار</h2>
   <div style="display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:12px">
     <button id="tab-morning" class="btn-turq" style="padding:8px 14px">أذكار الصباح</button>
