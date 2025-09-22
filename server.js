@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+
+// هنا لازم نستخدم بورت Render أو 3000 محلي
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -67,8 +69,6 @@ app.post('/reset', (req, res) => {
 // ==========================
 //   OPTIONAL: Provide adhkar list
 // ==========================
-// بدلاً من كتابة الأذكار داخل HTML، ممكن السيرفر يرجعها كـ JSON
-// وتتعامل معاها في JavaScript (frontend)
 const morningAdhkar = [
   "أصبحنا وأصبح الملك لله...",
   "رضيت بالله ربًا وبالإسلام دينًا...",
@@ -88,6 +88,6 @@ app.get('/adhkar', (req, res) => {
 // ==========================
 //   START SERVER
 // ==========================
-app.listen(port, () =>
-  console.log(`✅ Server running at http://localhost:${port}`)
+app.listen(PORT, () =>
+  console.log(`✅ Server running at http://localhost:${PORT}`)
 );
