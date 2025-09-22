@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 // هنا لازم نستخدم بورت Render أو 3000 محلي
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Middleware
 app.use(cors());
