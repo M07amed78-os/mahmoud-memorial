@@ -364,14 +364,14 @@
   <!-- قسم الصباح -->
   <div id="morning-section" style="display:block">
     <h3 class="section-title" style="text-align:center;margin-top:20px">أذكار الصباح</h3>
-    <div class="small" style="text-align:center">اضغط على المربع التركوازي لتسجيل التكرار.        .</div>
+    <div class="small" style="text-align:center">اضغط على المربع لتسجيل التكرار.        .</div>
     <div class="dhikr" id="morning-list" style="margin-top:14px"></div>
   </div>
 
   <!-- قسم المساء -->
   <div id="evening-section" style="display:none">
     <h3 class="section-title" style="text-align:center;margin-top:20px">أذكار المساء</h3>
-    <div class="small" style="text-align:center">اضغط على المربع التركوازي لتسجيل التكرار.        .</div>
+    <div class="small" style="text-align:center">اضغط على المربع لتسجيل التكرار.        .</div>
     <div class="dhikr" id="evening-list" style="margin-top:14px"></div>
   </div>
 </section>
@@ -712,6 +712,75 @@ document.addEventListener("DOMContentLoaded", () => {
     tabMorning.classList.add("btn-ghost");
     tabMorning.classList.remove("btn-turq");
   });
+});
+</script>
+<script>
+// --- حفظ واسترجاع العدادات للأذكار ---
+function initDhikrCounters(sectionId) {
+  const list = document.getElementById(sectionId);
+  if (!list) return;
+
+  list.querySelectorAll(".dhikr-item").forEach((item, index) => {
+    let counterEl = item.querySelector(".counter");
+    
+    // لو مفيش counter، نضيفه أوتوماتيك
+    if (!counterEl) {
+      counterEl = document.createElement("span");
+      counterEl.className = "counter";
+      counterEl.style.marginRight = "10px"; // مسافة صغيرة
+      counterEl.textContent = "0";
+      item.appendChild(counterEl);
+    }
+
+    const key = sectionId + "-dhikr-" + index;
+    let count = localStorage.getItem(key) || 0;
+    counterEl.innerText = count;
+
+    item.addEventListener("click", () => {
+      count++;
+      counterEl.innerText = count;
+      localStorage.setItem(key, count);
+    });
+  });
+}
+
+// --- حفظ واسترجاع العدادات للمسبحة ---
+function initSebhaCounters() {
+  const grid = document.getElementById("sebha-grid");
+  if (!grid) return;
+
+  grid.querySelectorAll(".sebha-item").forEach((item, index) => {
+    let counterEl = item.querySelector(".counter");
+    
+    // لو مفيش counter، نضيفه أوتوماتيك
+    if (!counterEl) {
+      counterEl = document.createElement("span");
+      counterEl.className = "counter";
+      counterEl.style.marginRight = "10px";
+      counterEl.textContent = "0";
+      item.appendChild(counterEl);
+    }
+
+    const key = "sebha-" + index;
+    let count = localStorage.getItem(key) || 0;
+    counterEl.innerText = count;
+
+    item.addEventListener("click", () => {
+      count++;
+      counterEl.innerText = count;
+      localStorage.setItem(key, count);
+    });
+  });
+}
+
+// تشغيل عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+  initDhikrCounters("morning-list");
+  initDhikrCounters("evening-list");
+  initSebhaCounters();
+
+  document.getElementById("footer-text").innerText =
+    "تم حفظ العدّادات محلياً في جهازك ✔";
 });
 </script>
 </body>
