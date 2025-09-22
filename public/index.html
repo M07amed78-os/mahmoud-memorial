@@ -117,8 +117,9 @@
 /* حاوية الأذكار */
 .dhikr {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;     /* يلف العناصر للسطور التالية */
   gap: 20px;
+  justify-content: center; /* اختياري – يجعلهم في الوسط */
 }
 
 /* البطاقة الأساسية - بدون دوائر */
@@ -128,7 +129,14 @@
   border-radius: 12px;
   position: relative;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-  border: 3px solid var(--turquoise); /* خط متصل وناعم */
+  border: 3px solid var(--turquoise);
+
+  /* 🟢 Text fixes */
+  display: block;
+  white-space: normal;        /* النص يلتف */
+  word-break: break-word;     /* يسمح بالكسر عند الحاجة */
+  text-align: right;          /* محاذاة عربية */
+  line-height: 1.8;           /* تباعد أسطر مريح */
 }
 </style>
 </head>
