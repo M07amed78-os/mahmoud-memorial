@@ -5,9 +5,6 @@ const cors = require('cors');
 
 const app = express();
 
-// هنا لازم نستخدم بورت Render أو 3000 محلي
-const PORT = process.env.PORT || 10000;
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -86,8 +83,9 @@ app.get('/adhkar', (req, res) => {
 });
 
 // ==========================
-//   START SERVER
+//   START SERVER (مرة واحدة بس)
 // ==========================
-app.listen(PORT, () =>
-  console.log(`✅ Server running at http://localhost:${PORT}`)
-);
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running at http://localhost:${PORT}`);
+});
