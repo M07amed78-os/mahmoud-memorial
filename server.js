@@ -83,9 +83,14 @@ app.get('/adhkar', (req, res) => {
 });
 
 // ==========================
-//   START SERVER (مرة واحدة بس)
+//   START SERVER
 // ==========================
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT;
+if (!PORT) {
+  console.error("❌ No PORT environment variable found. Exiting...");
+  process.exit(1);
+}
+
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
